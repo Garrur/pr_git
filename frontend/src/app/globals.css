@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-muted: #666666;
+  --color-border: #eaeaea;
+  
+  --color-accent: #0f172a; /* Slate 900 as accent */
+  --color-accent-foreground: #ffffff;
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* Base styles for premium minimalistic UI */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Subtle components/utilities */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .shadow-card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: #0f0f10;
+    --color-foreground: #fafafa;
+    --color-muted: #888888;
+    --color-border: #222222;
+    
+    --color-accent: #f8fafc; /* Slate 50 as accent */
+    --color-accent-foreground: #0f172a;
+  }
+  
+  @layer utilities {
+    .glass {
+      background: rgba(15, 15, 16, 0.7);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .shadow-soft {
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    
+    .shadow-card {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+  }
+}
